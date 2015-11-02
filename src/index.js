@@ -1,18 +1,12 @@
 import whichCountry from 'which-country';
 import Promise from 'bluebird';
 
-export default (errorHandler) => {
+export default _params => {
+  const params = { errorHandler: () => { return null; }, options: {}, ..._params };
   return new Promise(resolve => {
     navigator.geolocation.getCurrentPosition(position => {
       const country = whichCountry([position.coords.longitude, position.coords.latitude]);
       resolve(country);
-    },
-    error => {
-      if(errorHandler){
-        errorHandler(error);
-      } else {
-        return null;
-      }
-    });
+    }, params.errorHandler, params.options);
   });
 };
