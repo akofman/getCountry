@@ -16,6 +16,20 @@ var _bluebird2 = _interopRequireDefault(_bluebird);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/*
+ * Simple function that wraps navigator.geolocation.getCurrentPosition
+ * in a promise and return the country where you are geolocated.
+ * @param params
+ * @param params.errorHandler callback in case of errors
+ * @param params.options position options
+ * @param params.options.enableHighAccuracy
+ * @param params.options.timeout
+ * @param params.options.maximumAge
+ *
+ * For more details please see
+ * https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
+ */
+
 exports.default = function (_params) {
   var params = _extends({ errorHandler: function errorHandler() {
       return null;
